@@ -7,8 +7,8 @@
 {{--            <a class="text-decoration-none" href="/requests/{{ $request->id }}">--}}
             <x-card.request
                 title="{{ $request->title }}"
-                text="{{ str($request->description)->limit() }}"
-                image="{{ getRequestCategoryImage($request->requestCategory->token) }}"
+                text="{{ $request->description }}"
+                image="{{ asset('images/request_categories/' . $request->requestCategory->token . '.jpg') }}"
                 footer="{{ $request->updated_at->diffForHumans() }}"
             ></x-card.request>
         @endforeach

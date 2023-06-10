@@ -10,9 +10,15 @@ class UserSignupRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => [
+                'required',
+                'string',
+                'regex:/^[a-zA-ZÀ-ú\s\']+$/',
+            ],
             'email' => [
                 'required',
                 'email',
+                'unique:users,email'
             ],
             'password' => [
                 'required',
@@ -23,9 +29,19 @@ class UserSignupRequest extends FormRequest
                     ->mixedCase()
                     ->uncompromised()
             ],
-            'confirm-password' => [
+            'password-confirmation' => [
+                'required',
                 'same:password',
             ],
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'email' => __('user.field.email'),
+            'password' => __('user.field.password'),
+            'password-confirmation' => __('user.field.password-confirmation'),
         ];
     }
 }

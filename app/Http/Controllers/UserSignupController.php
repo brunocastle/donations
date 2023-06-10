@@ -2,23 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserAuthenticateRequest;
+use App\Http\Enums\UserType;
+use App\Http\Requests\UserSignupRequest;
+use App\Mail\UserEmailConfirmation;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserSignupController extends Controller
 {
-    public function __invoke(UserAuthenticateRequest $request): RedirectResponse|Redirector
+    public function __invoke(UserSignupRequest $request): RedirectResponse|Redirector
     {
         $data = $request->validated();
 
-        if (Auth::attempt($credentials)) {
-            return redirect(url('/'));
-        }
+        $data['type'] = UserType::Common->value;
+        $data['confirmation_token'] = Str::uuid();
 
-        return back()->withErrors([
-            'email' => __('user.invalid-credentials')
-        ]);
+        $user = User::create($data);
+
+        Mail::to($user->email)
+            ->send(new UserEmailConfirmation($user));
+
+        return redirect('/')->with('success', 'eita pleura');
     }
 }

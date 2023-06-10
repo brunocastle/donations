@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Http\Enums\UserType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -16,10 +17,11 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'type' => fake()->numberBetween(1,2),
+            'type' => randomElement(UserType::cases()),
             'email_verified_at' => now(),
             'password' => Hash::make('123'),
             'remember_token' => Str::random(10),
+            'confirmation_token' => null,
         ];
     }
 

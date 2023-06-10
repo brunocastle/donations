@@ -7,7 +7,7 @@
         id="{{ $field }}"
         name="{{ $field }}"
         placeholder="{{ $label }}"
-        @if( $type != 'password')
+        @if($type != 'password' && $type != 'password-confirmation')
             {{ $attributes(['value' => old($field)]) }}
         @endif
     >

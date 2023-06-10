@@ -1,7 +1,7 @@
 <?php
 
-    use App\Models\RequestCategory;
-    use Illuminate\Database\Migrations\Migration;
+use App\Models\RequestCategory;
+use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
@@ -11,7 +11,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->tinyInteger('type')->after('email');
-            $table->tinyInteger('language')->after('type')->default(1);
+            $table->tinyInteger('language')->default(1)->after('type');
+            $table->string('confirmation_token')->nullable()->after('remember_token');
             $table->softDeletes();
         });
 
