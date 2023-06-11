@@ -17,7 +17,7 @@ class RequestFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence,
+            'title' => fake()->sentence('6'),
             'description' => fake()->paragraph,
             'status' => randomElement(RequestStatus::cases()),
             'request_category_id' => RequestCategory::all()->random(),

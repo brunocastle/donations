@@ -23,4 +23,17 @@ enum RequestType: int
 //    case OrganDonation = 18;
 //    case EducationAndTraining = 19;
 //    case PsychologicalSupport = 20;
+
+    public function getName(): string
+    {
+        return match ($this) {
+            RequestType::Books => __('request-type.books'),
+            RequestType::Clothing => __('request-type.clothing'),
+            RequestType::Food => __('request-type.food'),
+            RequestType::Medications => __('request-type.medications'),
+            RequestType::SchoolSupplies => __('request-type.school_supplies'),
+            RequestType::Toys => __('request-type.toys'),
+            RequestType::VolunteerWork => __('request-type.volunteer_work'),
+        };
+    }
 }

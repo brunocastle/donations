@@ -8,7 +8,6 @@ use App\Mail\UserEmailConfirmation;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -26,6 +25,6 @@ class UserSignupController extends Controller
         Mail::to($user->email)
             ->send(new UserEmailConfirmation($user));
 
-        return redirect('/')->with('success', 'eita pleura');
+        return redirect('/');
     }
 }

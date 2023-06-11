@@ -1,7 +1,7 @@
 <header class="fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-black py-1 border-bottom">
         <div class="container-fluid">
-            <a class="navbar-brand me-lg-5" href="/">Do Nation</a>
+            <a class="navbar-brand me-lg-5" href="/">{{ __('common.app-name') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,10 +31,6 @@
 {{--                        <a class="nav-link disabled">Disabled</a>--}}
 {{--                    </li>--}}
                 </ul>
-                {{--                        <form class="d-flex">--}}
-                {{--                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">--}}
-                {{--                            <button class="btn btn-sm btn-light" type="submit">Search</button>--}}
-                {{--                        </form>--}}
                 <x-login-top-right></x-login-top-right>
             </div>
         </div>

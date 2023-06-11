@@ -23,6 +23,7 @@ class HomeController extends Controller
                 'id',
                 'title',
                 'description',
+                'status',
                 'request_category_id',
                 'organization_id',
                 'updated_at',
@@ -41,7 +42,7 @@ class HomeController extends Controller
     {
         return $data
             ->map(function (Request $request) {
-                $limit = 150 - Str::length($request->title);
+                $limit = 200 - Str::length($request->title);
                 $request->description = Str::limit($request->description, $limit);
                 return $request;
             })

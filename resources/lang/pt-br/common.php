@@ -11,5 +11,9 @@ return [
     'hello' => 'Olá',
     'mail' => [
         'please-ignore' => '<p>Se você recebeu esta mensagem por engano, por favor, ignore-a.</p>',
-    ]
+    ],
+    'donate' => 'Doar',
+    'donators' => 'Doadores',
+    'warning' => 'Atenção!',
+    'requested-by' => 'Solicitado por :requester'
 ];
